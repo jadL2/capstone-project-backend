@@ -3,6 +3,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { CropsModule } from './crops/crops.module';
+import { SoilAnalysisModule } from './soil-analysis/soil-analysis.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -16,6 +19,9 @@ import { AppService } from './app.service';
         uri: configService.get<string>('DATABASE_URI'),
       }),
     }),
+    CropsModule,
+    SoilAnalysisModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

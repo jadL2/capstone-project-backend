@@ -10,5 +10,6 @@ import { SoilAnalysis, SoilAnalysisSchema } from './schemas/soil-analysis.schema
   ],
   controllers: [SoilAnalysisController],
   providers: [SoilAnalysisService],
+  exports: [SoilAnalysisService],
 })
 export class SoilAnalysisModule {}

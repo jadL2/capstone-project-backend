@@ -1,15 +1,58 @@
+import { IsNotEmpty, IsString, IsDate, IsOptional, IsNumber, IsMongoId } from 'class-validator';
+import { Type } from 'class-transformer';
+import { Types } from 'mongoose';
+
 export class CreateSoilAnalysisDto {
-    farmName: string;
-    location: string;
-    userId: string;
-    sampleDate: Date;
-    pH?: number;
-    nitrogenLevel?: number;
-    phosphorusLevel?: number;
-    potassiumLevel?: number;
-    organicMatter?: number;
-    moisture?: number;
-    texture?: string;
-    recommendations?: string;
-    notes?: string;
-  }
+  @IsNotEmpty()
+  @IsString()
+  farmName: string;
+
+  @IsNotEmpty()
+  @IsString()
+  location: string;
+
+  @IsNotEmpty()
+  @IsMongoId()
+  userId: Types.ObjectId;
+
+  @IsNotEmpty()
+  @Type(() => Date)
+  @IsDate()
+  sampleDate: Date;
+
+  @IsOptional()
+  @IsNumber()
+  pH?: number;
+
+  @IsOptional()
+  @IsNumber()
+  nitrogenLevel?: number;
+
+  @IsOptional()
+  @IsNumber()
+  phosphorusLevel?: number;
+
+  @IsOptional()
+  @IsNumber()
+  potassiumLevel?: number;
+
+  @IsOptional()
+  @IsNumber()
+  organicMatter?: number;
+
+  @IsOptional()
+  @IsNumber()
+  moisture?: number;
+
+  @IsOptional()
+  @IsString()
+  texture?: string;
+
+  @IsOptional()
+  @IsString()
+  recommendations?: string;
+
+  @IsOptional()
+  @IsString()
+  notes?: string;
+}
